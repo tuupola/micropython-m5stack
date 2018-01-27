@@ -5,15 +5,15 @@ import m5stack
 
 button_a = DigitalInput(
     Pin(m5stack.BUTTON_A_PIN, Pin.IN, Pin.PULL_DOWN),
-    callback = lambda pin: display.print("Button A pressed."))
+    callback = lambda pin: display.print(" > Button A pressed."))
 
 button_b = DigitalInput(
     Pin(m5stack.BUTTON_B_PIN, Pin.IN, Pin.PULL_DOWN),
-    callback=lambda pin: display.print("Button B pressed."))
+    callback=lambda pin: display.print(" > Button B pressed."))
 
 button_c = DigitalInput(
     Pin(m5stack.BUTTON_C_PIN, Pin.IN, Pin.PULL_DOWN),
-    callback=lambda pin: display.print("Button C pressed."))
+    callback=lambda pin: display.print(" > Button C pressed."))
 
 power = Pin(m5stack.TFT_LED_PIN, Pin.OUT)
 power.value(1)
@@ -34,9 +34,19 @@ display = ILI9341(
 display.fill(color565(0xff, 0x00, 0x00))
 display.fill(color565(0x00, 0x00, 0x00))
 
-display.print("Hello world!")
+display.print("        `7MMM.     ,MMF'        ")
+display.print("          MMMb    dPMM          ")
+display.print("          M YM   ,M MM  M****** ")
+display.print("          M  Mb  M' MM .M       ")
+display.print("          M  YM.P'  MM |bMMAg.  ")
+display.print("          M  `YM'   MM      `Mb ")
+display.print("        .JML. `'  .JMML.     jM ")
+display.print("                       (O)  ,M9 ")
+display.print("                        6mmm9   ")
+display.print("                                ")
+display.print("        https://appelsiini.net/ ")
 
 i = 0
-while i < 40:
-    display.print("Foo bar {}!".format(i))
+while i < 9:
+    display.print("")
     i = i + 1
