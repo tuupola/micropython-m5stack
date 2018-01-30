@@ -6,7 +6,7 @@
 #   http://www.opensource.org/licenses/mit-license.php
 #
 # Project home:
-#   https://github.com/tuupola/micropython-m5stacj
+#   https://github.com/tuupola/micropython-m5stack
 
 from machine import Pin
 
