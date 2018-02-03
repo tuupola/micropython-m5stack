@@ -21,7 +21,7 @@ shell:
 	rshell --port /dev/tty.SLAB_USBtoUART --timing --buffer-size=32
 
 repl:
-	rshell --port /dev/tty.SLAB_USBtoUART --timing --buffer-size=32 repl
+	screen /dev/tty.SLAB_USBtoUART 115200
 
 reset:
 	rshell --port /dev/tty.SLAB_USBtoUART --timing --buffer-size=32 repl "~ import machine ~ machine.reset()~"
