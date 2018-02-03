@@ -21,39 +21,21 @@ button_a = DigitalInput(
 button_b = DigitalInput(
     Pin(m5stack.BUTTON_B_PIN, Pin.IN),
     callback=lambda pin: tft.text(
-        tft.CENTER, tft.LASTY, "> Button B pressed.    ")
+        tft.CENTER, tft.LASTY, "> Button B pressed.    "
     )
+)
 
 button_c = DigitalInput(
     Pin(m5stack.BUTTON_C_PIN, Pin.IN),
     callback=lambda pin: tft.text(
-        tft.CENTER, tft.LASTY, "> Button C pressed.    ")
+        tft.CENTER, tft.LASTY, "> Button C pressed.    "
     )
+)
 
 # power = Pin(m5stack.TFT_LED_PIN, Pin.OUT)
 # power.value(1)
 
-tft = display.TFT()
-tft.init(
-    tft.ILI9341,
-    spihost=tft.HSPI,
-    width=320,
-    height=240,
-    mosi=m5stack.TFT_MOSI_PIN,
-    miso=m5stack.TFT_MISO_PIN,
-    clk=m5stack.TFT_CLK_PIN,
-    cs=m5stack.TFT_CS_PIN,
-    dc=m5stack.TFT_DC_PIN,
-    rst_pin=m5stack.TFT_RST_PIN,
-    backl_pin=m5stack.TFT_LED_PIN,
-    backl_on=1,
-    speed=2600000,
-    invrot=3,
-    bgr=True
-)
-
-tft.orient(tft.LANDSCAPE)
-tft.font(tft.FONT_Small, fixedwidth=True)
+tft = m5stack.TFT()
 
 tft.text(tft.CENTER, 45,        "`7MMM.     ,MMF'       \n")
 tft.text(tft.CENTER, tft.LASTY, "  MMMb    dPMM         \n")
