@@ -32,9 +32,6 @@ button_c = DigitalInput(
     )
 )
 
-# power = Pin(m5stack.TFT_LED_PIN, Pin.OUT)
-# power.value(1)
-
 tft = m5stack.TFT()
 
 tft.text(tft.CENTER, 45,        "`7MMM.     ,MMF'       \n")

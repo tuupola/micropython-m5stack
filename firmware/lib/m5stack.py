@@ -11,8 +11,9 @@
 M5Stack specific constants and classes.
 """
 
-from micropython import const # pylint: disable=import-error
 import display # pylint: disable=import-error
+from machine import Pin # pylint: disable=import-error
+from micropython import const # pylint: disable=import-error
 
 BUTTON_A_PIN = const(39)
 BUTTON_B_PIN = const(38)
@@ -59,3 +60,11 @@ class TFT(object):
         tft.font(tft.FONT_Small, fixedwidth=True)
 
         return tft
+
+    def on(self):
+        power = Pin(TFT_LED_PIN, Pin.OUT)
+        power.value(1)
+
+    def off(self):
+        power = Pin(TFT_LED_PIN, Pin.OUT)
+        power.value(0)
