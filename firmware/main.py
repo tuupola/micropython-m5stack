@@ -1,5 +1,5 @@
 # This file is part of MicroPython M5Stack package
-# Copyright (c) 2017 Mika Tuupola
+# Copyright (c) 2017-2018 Mika Tuupola
 #
 # Licensed under the MIT license:
 #   http://www.opensource.org/licenses/mit-license.php
@@ -7,10 +7,10 @@
 # Project home:
 #   https://github.com/tuupola/micropython-m5stack
 
-from machine import Pin, SPI
-from input import DigitalInput
-import display
-import m5stack
+from machine import Pin, SPI # pylint: disable=import-error
+from input import DigitalInput # pylint: disable=import-error
+import display # pylint: disable=import-error
+import m5stack # pylint: disable=import-error
 
 button_a = DigitalInput(
     Pin(m5stack.BUTTON_A_PIN, Pin.IN),

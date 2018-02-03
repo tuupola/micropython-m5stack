@@ -1,11 +1,15 @@
 # This file is part of MicroPython M5Stack package
-# Copyright (c) 2017 Mika Tuupola
+# Copyright (c) 2017-2018 Mika Tuupola
 #
 # Licensed under the MIT license:
 #   http://www.opensource.org/licenses/mit-license.php
 #
 # Project home:
 #   https://github.com/tuupola/micropython-m5stack
+
+"""
+M5Stack specific constants and classes.
+"""
 
 from micropython import const # pylint: disable=import-error
 import display # pylint: disable=import-error

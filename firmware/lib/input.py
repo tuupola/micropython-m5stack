@@ -8,7 +8,11 @@
 # Project home:
 #   https://github.com/tuupola/micropython-m5stack
 
-from machine import Pin
+"""
+Handle io pin as a digital input.
+"""
+
+from machine import Pin # pylint: disable=import-error
 
 class DigitalInput(object):
 
