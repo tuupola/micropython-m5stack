@@ -12,6 +12,7 @@ M5Stack specific constants and classes.
 """
 
 import display # pylint: disable=import-error
+from input import DigitalInput # pylint: disable=import-error
 from machine import Pin # pylint: disable=import-error
 from micropython import const # pylint: disable=import-error
 
@@ -27,6 +28,21 @@ TFT_MOSI_PIN = const(23)
 TFT_CLK_PIN = const(18)
 TFT_RST_PIN = const(33)
 TFT_MISO_PIN = const(19)
+
+class ButtonA(DigitalInput):
+    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING):
+        pin = Pin(BUTTON_A_PIN, Pin.IN)
+        DigitalInput.__init__(self, pin, callback=callback, trigger=trigger)
+
+class ButtonB(object):
+    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING):
+        pin = Pin(BUTTON_B_PIN, Pin.IN)
+        DigitalInput.__init__(self, pin, callback=callback, trigger=trigger)
+
+class ButtonC(object):
+    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING):
+        pin = Pin(BUTTON_C_PIN, Pin.IN)
+        DigitalInput.__init__(self, pin, callback=callback, trigger=trigger)
 
 class TFT(object):
 

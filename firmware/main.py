@@ -12,21 +12,19 @@ from input import DigitalInput # pylint: disable=import-error
 import display # pylint: disable=import-error
 import m5stack # pylint: disable=import-error
 
-button_a = DigitalInput(
-    Pin(m5stack.BUTTON_A_PIN, Pin.IN),
-    callback = lambda pin: tft.text(
-        tft.CENTER, tft.LASTY, "> Button A pressed.    ")
+button_a = m5stack.ButtonA(
+    callback=lambda pin: tft.text(
+        tft.CENTER, tft.LASTY, "> Button A pressed.    "
     )
+)
 
-button_b = DigitalInput(
-    Pin(m5stack.BUTTON_B_PIN, Pin.IN),
+button_b = m5stack.ButtonB(
     callback=lambda pin: tft.text(
         tft.CENTER, tft.LASTY, "> Button B pressed.    "
     )
 )
 
-button_c = DigitalInput(
-    Pin(m5stack.BUTTON_C_PIN, Pin.IN),
+button_c = m5stack.ButtonC(
     callback=lambda pin: tft.text(
         tft.CENTER, tft.LASTY, "> Button C pressed.    "
     )
