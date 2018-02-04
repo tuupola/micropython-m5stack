@@ -1,8 +1,20 @@
 # MicroPython Kitchen Sink for M5Stack
 
+This repository contains few abstractions and helper libraries to help jumpstarting a MicroPython project with [M5Stack development kit](http://www.m5stack.com/). All development is done using [Loboris fork](https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo) of MicroPython. Everything is still evolving. Code should be considered alpha quality. BC breaks will happen.
+
+Use `make sync` to upload files to the board. Not that you must have [rshell](https://github.com/dhylands/rshell) installed. After uploading `make repl` accesses the serial repl.
+
+```shell
+$ sudo pip3 install rshell
+$ make sync
+$ make repl
+```
+
+The file `main.py` will contain the kitchen sink example. Helper libraries and absractions are in `lib` folder.
+
 ## Display
 
-Light weight wrapper for [Loboris TFT](https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo/wiki/display) module which retains all the original api and properties but adds a few helper methods.
+Light weight wrapper for [Loboris TFT module](https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo/wiki/display)  which retains all the original api and properties but adds a few helper methods. See [Loboris wiki](https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo/wiki/display) for documentation.
 
 ```python
 import m5stack
@@ -47,3 +59,7 @@ c = m5stack.ButtonC(callback=button_handler())
 def button_hander(pin):
     print("Button C pressed.")
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
