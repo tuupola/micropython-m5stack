@@ -44,7 +44,7 @@ class ButtonC(object):
         pin = Pin(BUTTON_C_PIN, Pin.IN)
         DigitalInput.__init__(self, pin, callback=callback, trigger=trigger)
 
-class TFT(object):
+class Display(object):
 
     def __init__(self):
         self.tft = self.create()

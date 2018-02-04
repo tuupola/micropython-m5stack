@@ -30,7 +30,7 @@ button_c = m5stack.ButtonC(
     )
 )
 
-tft = m5stack.TFT()
+tft = m5stack.Display()
 
 tft.text(tft.CENTER, 45,        "`7MMM.     ,MMF'       \n")
 tft.text(tft.CENTER, tft.LASTY, "  MMMb    dPMM         \n")
