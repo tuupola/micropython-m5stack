@@ -1,3 +1,4 @@
+#
 # This file is part of MicroPython M5Stack package
 # Copyright (c) 2017-2018 Mika Tuupola
 #
@@ -6,6 +7,7 @@
 #
 # Project home:
 #   https://github.com/tuupola/micropython-m5stack
+#
 
 """
 M5Stack specific constants and classes.

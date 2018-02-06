@@ -1,4 +1,5 @@
-# This file is part of MicroPython M5Stack package
+#
+# # This file is part of MicroPython M5Stack package
 # Copyright (c) 2017-2018 Mika Tuupola
 #
 # Licensed under the MIT license:
@@ -6,6 +7,7 @@
 #
 # Project home:
 #   https://github.com/tuupola/micropython-m5stack
+#
 
 from machine import Pin, SPI # pylint: disable=import-error
 from input import DigitalInput # pylint: disable=import-error

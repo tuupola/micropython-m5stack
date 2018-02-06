@@ -1,4 +1,4 @@
-
+#
 # This file is part of MicroPython M5Stack package
 # Copyright (c) 2017 Mika Tuupola
 #
@@ -7,6 +7,7 @@
 #
 # Project home:
 #   https://github.com/tuupola/micropython-m5stack
+#
 
 """
 Handle io pin as a digital input.
