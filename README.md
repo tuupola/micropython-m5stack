@@ -1,5 +1,7 @@
 # MicroPython Kitchen Sink for M5Stack
 
+![M5Stack](https://appelsiini.net/img/m5-wires-1400.jpg)
+
 This repository contains few abstractions and helper libraries to help jumpstarting a MicroPython project with [M5Stack development kit](http://www.m5stack.com/). All development is done using [Loboris fork](https://github.com/loboris/MicroPython_ESP32_psRAM_LoBo) of MicroPython. Everything is still evolving. Code should be considered alpha quality. BC breaks will happen.
 
 Use `make sync` to upload files to the board. Not that you must have [rshell](https://github.com/dhylands/rshell) installed. After uploading `make repl` accesses the serial repl.
