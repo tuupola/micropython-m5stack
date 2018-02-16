@@ -13,16 +13,44 @@
 Handle io pin as a digital input.
 """
 
-from machine import Pin # pylint: disable=import-error
+# pylint: disable=import-error
+import machine
+from machine import Pin
+# pylint: enable=import-error
 
 class DigitalInput(object):
 
-    def __init__(self, pin, callback=None, trigger=Pin.IRQ_FALLING):
-        if callback is None:
-            callback = self.callback
-        self.pin = pin
-        self.pin.init(self.pin.IN)
-        self.pin.irq(trigger=trigger, handler=callback)
+    def __init__(self, pin, callback=None, trigger=Pin.IRQ_FALLING | Pin.IRQ_RISING):
+        self._register = 0b11111111
+        self._user_callback = callback
+        self._current_state = False
+        self._previous_state = False
+        self._pin = pin
+        self._pin.init(self._pin.IN)
+        self._pin.irq(trigger=trigger, handler=self._callback)
 
-    def callback(self, pin):
-        pass
+    def _callback(self, pin):
+        irq_state = machine.disable_irq()
+
+        while True:
+            self._register <<= 1
+            self._register |= pin.value()
+            self._register &= 0b11111111
+
+            # print("{:08b}".format(self._register))
+            # All bits set, button has been released for 8 loops
+            if self._register is 0b11111111:
+                self._current_state = False
+                break
+
+            # All bits unset, button has been pressed for 8 loops
+            if self._register is 0b00000000:
+                self._current_state = True
+                break
+
+        # Handle edge case of two consequent rising interrupts
+        if self._current_state is not self._previous_state:
+            self._previous_state = self._current_state
+            self._user_callback(self._pin, self._current_state)
+
+        machine.enable_irq(irq_state)

@@ -32,17 +32,17 @@ TFT_RST_PIN = const(33)
 TFT_MISO_PIN = const(19)
 
 class ButtonA(DigitalInput):
-    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING):
+    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING | Pin.IRQ_RISING):
         pin = Pin(BUTTON_A_PIN, Pin.IN)
         DigitalInput.__init__(self, pin, callback=callback, trigger=trigger)
 
-class ButtonB(object):
-    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING):
+class ButtonB(DigitalInput):
+    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING | Pin.IRQ_RISING):
         pin = Pin(BUTTON_B_PIN, Pin.IN)
         DigitalInput.__init__(self, pin, callback=callback, trigger=trigger)
 
-class ButtonC(object):
-    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING):
+class ButtonC(DigitalInput):
+    def __init__(self, callback=None, trigger=Pin.IRQ_FALLING | Pin.IRQ_RISING):
         pin = Pin(BUTTON_C_PIN, Pin.IN)
         DigitalInput.__init__(self, pin, callback=callback, trigger=trigger)
 

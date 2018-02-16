@@ -48,18 +48,19 @@ Abstraction for the provided buttons using IRQ. Default is `IRQ_FALLING` ie. whe
 
 ```python
 a = m5stack.ButtonA(
-    callback=lambda pin: print("Button A pressed.")
+    callback=lambda pin, pressed: print("Button A " + ("pressed" if pressed else "released")
 )
 
 b = m5stack.ButtonB(
-    trigger=Pin.IRQ_RISING,
-    callback=lambda pin: print("Button B released.")
+    callback=lambda pin, pressed: callback=lambda pin, pressed: print("Button B " + ("pressed" if pressed else "released")
+
 )
 
-c = m5stack.ButtonC(callback=button_handler())
-
-def button_hander(pin):
-    print("Button C pressed.")
+def button_hander(pin, pressed):
+    if pressed is True:
+        print("Button C pressed")
+    else:
+        print("Button C released")
 ```
 
 ## License
