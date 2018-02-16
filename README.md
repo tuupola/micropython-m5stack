@@ -48,12 +48,11 @@ Abstraction for the provided buttons using IRQ. Buttons are debounced and they c
 
 ```python
 a = m5stack.ButtonA(
-    callback=lambda pin, pressed: print("Button A " + ("pressed" if pressed else "released")
+    callback=lambda pin, pressed: print("Button A " + ("pressed" if pressed else "released"))
 )
 
 b = m5stack.ButtonB(
-    callback=lambda pin, pressed: callback=lambda pin, pressed: print("Button B " + ("pressed" if pressed else "released")
-
+    callback=lambda pin, pressed: print("Button B " + ("pressed" if pressed else "released"))
 )
 
 c = m5stack.ButtonC(callback=button_hander)
@@ -64,6 +63,17 @@ def button_hander(pin, pressed):
     else:
         print("Button C released")
 ```
+
+## Speaker
+
+Basic support for playing tones in the builtin speaker.
+
+```python
+import m5stack
+
+m5stack.tone(2200, duration=10, volume=1)
+```
+
 
 ## License
 

@@ -13,10 +13,14 @@
 M5Stack specific constants and classes.
 """
 
-import display # pylint: disable=import-error
-from input import DigitalInput # pylint: disable=import-error
-from machine import Pin # pylint: disable=import-error
-from micropython import const # pylint: disable=import-error
+# pylint: disable=import-error
+import utime as time
+import display
+import machine
+from input import DigitalInput
+from machine import Pin, PWM
+from micropython import const
+# pylint: enable=import-error
 
 BUTTON_A_PIN = const(39)
 BUTTON_B_PIN = const(38)
@@ -30,6 +34,15 @@ TFT_MOSI_PIN = const(23)
 TFT_CLK_PIN = const(18)
 TFT_RST_PIN = const(33)
 TFT_MISO_PIN = const(19)
+
+def tone(frequency, duration=100, pin=None, volume=1):
+    if pin is None:
+        pin = Pin(SPEAKER_PIN)
+
+    pwm = PWM(pin, duty=volume % 50)
+    pwm.freq(frequency)
+    time.sleep_ms(duration)
+    pwm.deinit()
 
 class ButtonA(DigitalInput):
     def __init__(self, callback=None, trigger=Pin.IRQ_FALLING | Pin.IRQ_RISING):
@@ -86,3 +99,4 @@ class Display(object):
     def off(self):
         power = Pin(TFT_LED_PIN, Pin.OUT)
         power.value(0)
+
