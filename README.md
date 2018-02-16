@@ -56,6 +56,8 @@ b = m5stack.ButtonB(
 
 )
 
+c = m5stack.ButtonC(callback=button_hander)
+
 def button_hander(pin, pressed):
     if pressed is True:
         print("Button C pressed")
