@@ -44,7 +44,7 @@ tft.off()
 
 ## Buttons
 
-Abstraction for the provided buttons using IRQ. Default is `IRQ_FALLING` ie. when button was pressed. You can also use `IRQ_RISING` and `IRQ_RISING | IRQ_FALLING`.
+Abstraction for the provided buttons using IRQ. Buttons are debounced and they can detect both pressing and relasing of the button.
 
 ```python
 a = m5stack.ButtonA(
