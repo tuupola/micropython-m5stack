@@ -21,7 +21,7 @@ from machine import Pin
 class DigitalInput(object):
 
     def __init__(self, pin, callback=None, trigger=Pin.IRQ_FALLING | Pin.IRQ_RISING):
-        self._register = 0b11111111
+        self._register = bytearray([0b11111111])
         self._user_callback = callback
         self._current_state = False
         self._previous_state = False
@@ -33,18 +33,17 @@ class DigitalInput(object):
         irq_state = machine.disable_irq()
 
         while True:
-            self._register <<= 1
-            self._register |= pin.value()
-            self._register &= 0b11111111
+            self._register[0] <<= 1
+            self._register[0] |= pin.value()
 
-            # print("{:08b}".format(self._register))
+            #print("{:08b}".format(self._register[0]))
             # All bits set, button has been released for 8 loops
-            if self._register is 0b11111111:
+            if self._register[0] is 0b11111111:
                 self._current_state = False
                 break
 
             # All bits unset, button has been pressed for 8 loops
-            if self._register is 0b00000000:
+            if self._register[0] is 0b00000000:
                 self._current_state = True
                 break
 
