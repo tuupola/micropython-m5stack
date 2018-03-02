@@ -91,12 +91,3 @@ class Display(object):
         tft.font(tft.FONT_Small, fixedwidth=True)
 
         return tft
-
-    def on(self):
-        power = Pin(TFT_LED_PIN, Pin.OUT)
-        power.value(1)
-
-    def off(self):
-        power = Pin(TFT_LED_PIN, Pin.OUT)
-        power.value(0)
-

@@ -38,8 +38,8 @@ tft.text(tft.CENTER, tft.LASTY, "https://appelsiini.net/")
 Helper methods for turning the display on and off. Under the hood this just sets `TFT_LED_PIN` high or low.
 
 ```python
-tft.on()
-tft.off()
+tft.backlight(False)
+tft.backlight(True)
 ```
 
 ## Buttons
