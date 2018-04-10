@@ -35,10 +35,7 @@ TFT_CLK_PIN = const(18)
 TFT_RST_PIN = const(33)
 TFT_MISO_PIN = const(19)
 
-def tone(frequency, duration=100, pin=None, volume=1):
-    if pin is None:
-        pin = Pin(SPEAKER_PIN)
-
+def tone(frequency, duration=100, pin=SPEAKER_PIN, volume=1):
     pwm = PWM(pin, duty=volume % 50)
     pwm.freq(frequency)
     time.sleep_ms(duration)
@@ -61,7 +58,8 @@ class ButtonC(DigitalInput):
 
 class Display(object):
 
-    def __init__(self):
+    def __init__(self, speed=26000000):
+        self.speed = speed
         self.tft = self.create()
 
     def __getattr__(self, name):
@@ -82,7 +80,7 @@ class Display(object):
             rst_pin=TFT_RST_PIN,
             backl_pin=TFT_LED_PIN,
             backl_on=1,
-            speed=2600000,
+            speed=self.speed,
             invrot=3,
             bgr=True
         )
