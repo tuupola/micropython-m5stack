@@ -55,9 +55,9 @@ b = m5stack.ButtonB(
     callback=lambda pin, pressed: print("Button B " + ("pressed" if pressed else "released"))
 )
 
-c = m5stack.ButtonC(callback=button_hander)
+c = m5stack.ButtonC(callback=button_handler)
 
-def button_hander(pin, pressed):
+def button_handler(pin, pressed):
     if pressed is True:
         print("Button C pressed")
     else:
