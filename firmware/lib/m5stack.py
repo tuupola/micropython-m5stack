@@ -82,7 +82,8 @@ class Display(object):
             backl_on=1,
             speed=self.speed,
             invrot=3,
-            bgr=True
+            bgr=True,
+            splash=False
         )
 
         tft.orient(tft.LANDSCAPE)
