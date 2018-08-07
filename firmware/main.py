@@ -30,7 +30,7 @@ tft.text(tft.CENTER, tft.LASTY, "                6mmm9  \n")
 tft.text(tft.CENTER, tft.LASTY, "                       \n")
 tft.text(tft.CENTER, tft.LASTY, "https://appelsiini.net/")
 
-def button_hander_a(pin, pressed):
+def button_handler_a(pin, pressed):
     if pressed is True:
         tft.text(
             tft.CENTER, tft.LASTY, "> Button A pressed.     "
@@ -42,7 +42,7 @@ def button_hander_a(pin, pressed):
         )
         m5stack.tone(1300, duration=10, volume=1)
 
-def button_hander_b(pin, pressed):
+def button_handler_b(pin, pressed):
     if pressed is True:
         tft.text(
             tft.CENTER, tft.LASTY, "> Button B pressed.     "
@@ -54,7 +54,7 @@ def button_hander_b(pin, pressed):
         )
         m5stack.tone(1500, duration=10, volume=1)
 
-def button_hander_c(pin, pressed):
+def button_handler_c(pin, pressed):
     if pressed is True:
         tft.text(
             tft.CENTER, tft.LASTY, "> Button C pressed.     "
@@ -66,6 +66,6 @@ def button_hander_c(pin, pressed):
         )
         m5stack.tone(1800, duration=10, volume=1)
 
-a = m5stack.ButtonA(callback=button_hander_a)
-b = m5stack.ButtonB(callback=button_hander_b)
-c = m5stack.ButtonC(callback=button_hander_c)
+a = m5stack.ButtonA(callback=button_handler_a)
+b = m5stack.ButtonB(callback=button_handler_b)
+c = m5stack.ButtonC(callback=button_handler_c)
