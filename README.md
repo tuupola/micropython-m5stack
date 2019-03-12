@@ -74,6 +74,18 @@ import m5stack
 m5stack.tone(2200, duration=10, volume=1)
 ```
 
+## Battery
+
+Basic support getting battery charge level. Value is returned as percentage in steps of 25 ie. 0, 25, 50, 75 and 100.
+
+```python
+from machine import I2C
+from ip5306 import IP5306
+
+i2c = I2C(scl=Pin(22), sda=Pin(21))
+battery = IP5306(i2c)
+print(str(battery.level) + "%"))
+```
 
 ## License
 

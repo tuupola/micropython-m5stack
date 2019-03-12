@@ -10,11 +10,15 @@
 #
 
 #pylint: disable=import-error
-from machine import Pin, SPI
+from machine import I2C, Pin, SPI, Timer
 from input import DigitalInput
+from ip5306 import IP5306
+from micropython import const
 import display
 import m5stack
 #pylint: enable=import-error
+
+BUTTON_Y = const(181)
 
 tft = m5stack.Display()
 
@@ -30,42 +34,52 @@ tft.text(tft.CENTER, tft.LASTY, "                6mmm9  \n")
 tft.text(tft.CENTER, tft.LASTY, "                       \n")
 tft.text(tft.CENTER, tft.LASTY, "https://appelsiini.net/")
 
+i2c = I2C(scl=Pin(22), sda=Pin(21))
+battery = IP5306(i2c)
+tft.text(tft.RIGHT, 2, str(battery.level) + "%")
+
 def button_handler_a(pin, pressed):
     if pressed is True:
         tft.text(
-            tft.CENTER, tft.LASTY, "> Button A pressed.     "
+            tft.CENTER, BUTTON_Y, "> Button A pressed.     "
         )
         m5stack.tone(1800, duration=10, volume=1)
     else:
         tft.text(
-            tft.CENTER, tft.LASTY, "> Button A released.    "
+            tft.CENTER, BUTTON_Y, "> Button A released.    "
         )
         m5stack.tone(1300, duration=10, volume=1)
 
 def button_handler_b(pin, pressed):
     if pressed is True:
         tft.text(
-            tft.CENTER, tft.LASTY, "> Button B pressed.     "
+            tft.CENTER, BUTTON_Y, "> Button B pressed.     "
         )
         m5stack.tone(2000, duration=10, volume=1)
     else:
         tft.text(
-            tft.CENTER, tft.LASTY, "> Button B released.    "
+            tft.CENTER, BUTTON_Y, "> Button B released.    "
         )
         m5stack.tone(1500, duration=10, volume=1)
 
 def button_handler_c(pin, pressed):
     if pressed is True:
         tft.text(
-            tft.CENTER, tft.LASTY, "> Button C pressed.     "
+            tft.CENTER, BUTTON_Y, "> Button C pressed.     "
         )
         m5stack.tone(2200, duration=10, volume=1)
     else:
         tft.text(
-            tft.CENTER, tft.LASTY, "> Button C released.    "
+            tft.CENTER, BUTTON_Y, "> Button C released.    "
         )
         m5stack.tone(1800, duration=10, volume=1)
 
 a = m5stack.ButtonA(callback=button_handler_a)
 b = m5stack.ButtonB(callback=button_handler_b)
 c = m5stack.ButtonC(callback=button_handler_c)
+
+def battery_level(timer):
+    tft.text(tft.RIGHT, 2, str(battery.level) + "%")
+
+timer_0 = Timer(0)
+timer_0.init(period=5000, mode=Timer.PERIODIC, callback=battery_level)
