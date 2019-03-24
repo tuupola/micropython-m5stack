@@ -35,6 +35,15 @@ tft.text(tft.CENTER, tft.LASTY, "                       \n")
 tft.text(tft.CENTER, tft.LASTY, "https://appelsiini.net/")
 
 i2c = I2C(scl=Pin(22), sda=Pin(21))
+
+# Scan for I2C devices:
+# 0x56 = Wheel
+# 0x68 = MPU6500
+# 0x75 = IP5306
+devices = map(hex, i2c.scan())
+print("I2C devices found:", end=" ")
+print(", ".join(devices))
+
 battery = IP5306(i2c)
 tft.text(tft.RIGHT, 2, str(battery.level) + "%")
 
