@@ -87,6 +87,21 @@ battery = IP5306(i2c)
 print(str(battery.level) + "%"))
 ```
 
+## Motor
+
+Basic support for the M5Stack balance bot motor. Motor speed values can be between -255 and 255. Encoder returns the difference since last read of the encoder value.
+
+```python
+from machine import I2C
+from motor import Motor
+
+i2c = I2C(scl=Pin(22), sda=Pin(21))
+motor = Motor(i2c)
+
+motor.speed(100, 100)
+print(motor.encoder)
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
